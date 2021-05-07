@@ -343,6 +343,7 @@ export function legendFill(self, seriesIdx) {
 
 export const legendOpts = {
 	show: true,
+	showMarker: true,
 	width: 2,
 	stroke: legendStroke,
 	fill: legendFill,

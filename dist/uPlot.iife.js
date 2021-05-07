@@ -984,6 +984,7 @@ var uPlot = (function () {
 
 	var legendOpts = {
 		show: true,
+		showMarker: true,
 		width: 2,
 		stroke: legendStroke,
 		fill: legendFill,
@@ -2280,6 +2281,7 @@ var uPlot = (function () {
 
 		var legend     = (self.legend = assign({}, legendOpts, opts.legend));
 		var showLegend = legend.show;
+		var showMarker = legend.showMarker;
 
 		{
 			legend.width  = fnOrSelf(legend.width);
@@ -2337,20 +2339,25 @@ var uPlot = (function () {
 				{ addClass(row, OFF); }
 
 			var label = placeTag("th", null, row);
+			
+					var text = placeDiv(LEGEND_LABEL, label);
+					text.textContent = s.label;
 
 			var indic = placeDiv(LEGEND_MARKER, label);
 
 			if (i > 0) {
 				var width  = legend.width(self, i);
 
-				if (width)
-					{ indic.style.border = width + "px " + legend.dash(self, i) + " " + legend.stroke(self, i); }
+				if (width){
+					indic.style.border = width + "px " + legend.dash(self, i) + " " + legend.stroke(self, i);
+					if(!showMarker) {
+						indic.style.display = "none";
+						text.style.color = legend.stroke(self, i);
+					}
+				}
 
 				indic.style.background = legend.fill(self, i);
 			}
-
-			var text = placeDiv(LEGEND_LABEL, label);
-			text.textContent = s.label;
 
 			if (i > 0) {
 				onMouse("click", label, e => {

@@ -525,10 +525,10 @@ export default function uPlot(opts, data, then) {
 
 		let label = placeTag("th", null, row);
 		
-				let text = placeDiv(LEGEND_LABEL, label);
-				text.textContent = s.label;
-
 		let indic = placeDiv(LEGEND_MARKER, label);
+		
+		let text = placeDiv(LEGEND_LABEL, label);
+		text.textContent = s.label;
 
 		if (i > 0) {
 			let width  = legend.width(self, i);

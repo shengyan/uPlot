@@ -529,7 +529,7 @@ export default function uPlot(opts, data, then) {
 		
 		let text = placeDiv(LEGEND_LABEL, label);
 		text.textContent = s.label;
-
+		
 		if (i > 0) {
 			let width  = legend.width(self, i);
 
